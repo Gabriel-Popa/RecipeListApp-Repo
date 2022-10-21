@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Recipe: Identifiable, Decodable {
     
@@ -17,6 +18,16 @@ class Recipe: Identifiable, Decodable {
     var prepTime:String
     var cookTime:String
     var servings:Int
-    var ingredients:[String]
+    var ingredients:[Ingredient]
     var directions:[String]
+    var highlights:[String]
+}
+
+class Ingredient: Identifiable, Decodable {
+    
+    var id:UUID?
+    var name:String
+    var num:Int?
+    var denom:Int?
+    var unit:String?
 }
