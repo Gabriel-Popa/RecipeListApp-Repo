@@ -11,7 +11,7 @@ struct RecipeListView: View {
     
     //Reference the view model
     
-    @ObservedObject var model = RecipeModel()
+    @EnvironmentObject var model:RecipeModel
     
     var body: some View {
         
