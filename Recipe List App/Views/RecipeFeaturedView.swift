@@ -38,8 +38,8 @@ struct RecipeFeaturedView: View {
                                 VStack(spacing: 0) {
                                     Image(model.recipes[index].image)
                                         .resizable()
-                                        .clipped()
                                         .aspectRatio(contentMode: .fill)
+                                        .clipped()
                                     Text(model.recipes[index].name)
                                         .padding(5)
                                 }
