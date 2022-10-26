@@ -13,14 +13,23 @@ struct RecipeDetailView: View {
     @State var selectedServingSize = 2
     
     var body: some View {
+        
         ScrollView {
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 
                 //MARK: Recipe image
                 Image(recipe.image)
                     .resizable()
                     .scaledToFill()
+                
+                //MARK: Recipe Title
+                
+                Text(recipe.name)
+                    .bold()
+                    .padding(.top, 20)
+                    .padding(.leading)
+                    .font(.largeTitle)
                 
                 //MARK: Serving Size Picker
                 VStack(alignment: .leading) {
@@ -41,12 +50,14 @@ struct RecipeDetailView: View {
                     Text("Ingredients")
                         .font(.headline)
                         .padding([.bottom, .top], 5)
+                    
                     ForEach(recipe.ingredients) { item in
+                        
                         Text("• " + RecipeModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + item.name.lowercased())
                     }
                 }
                 .padding(.horizontal)
-
+                
                 //MARK: Divider
                 
                 Divider()
@@ -58,16 +69,14 @@ struct RecipeDetailView: View {
                         .padding([.bottom, .top], 5)
                     
                     ForEach(0..<recipe.directions.count, id: \.self) { index in
+                        
                         Text(String(index+1) + ". " + recipe.directions[index])
                             .padding(.bottom, 5)
                     }
                 }
                 .padding(.horizontal)
-
             }
-
         }
-        .navigationBarTitle(recipe.name)
     }
 }
 
